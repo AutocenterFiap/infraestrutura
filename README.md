@@ -6,8 +6,10 @@ iniciais.
 
 ## Arquitetura
 
-O desenho em [arquitetura.drawio](./arquitetura.drawio) representa os recursos
-definidos neste projeto:
+O desenho abaixo que  representa os recursos definidos neste projeto:
+
+<img width="1388" height="880" alt="image" src="https://github.com/user-attachments/assets/340d76e8-cab4-405f-b48f-c90fb570c633" />
+
 
 - VPC `10.0.0.0/16` na região `us-east-1`;
 - Internet Gateway e tabela de rotas públicas;
