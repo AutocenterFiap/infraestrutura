@@ -1,8 +1,7 @@
 # Infraestrutura AutoCenter
 
 Infraestrutura AWS provisionada com Terraform neste diretório. O projeto cria a
-rede, o cluster Amazon EKS, o repositório de imagens e recursos Kubernetes
-iniciais.
+rede, o cluster Amazon EKS e o repositório de imagens.
 
 ## Arquitetura
 
@@ -27,7 +26,6 @@ O desenho abaixo que  representa os recursos definidos neste projeto:
 | EKS | Versão 1.35, distribuído nas três sub-redes públicas. |
 | Node group | Instâncias `t3.small`, de 1 a 3 nós, 2 nós desejados e disco de 20 GB. |
 | ECR | Repositório com varredura de imagens no push e tags mutáveis. |
-| Kubernetes | Namespace, deployment e service Nginx aplicados pelo provider `kubectl`. |
 
 ## Pré-requisitos
 
