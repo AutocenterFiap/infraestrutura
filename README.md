@@ -87,6 +87,10 @@ plano:
 - `AWS_SESSION_TOKEN`;
 - `TF_API_TOKEN`.
 
+As credenciais AWS usadas pelo workflow são temporárias. Sempre que a sessão
+AWS expirar, atualize juntos `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` e
+`AWS_SESSION_TOKEN` nos Secrets do GitHub antes de executar um novo plano.
+
 O pipeline não executa `terraform apply`; a aplicação de mudanças permanece
 uma ação manual e revisada.
 
