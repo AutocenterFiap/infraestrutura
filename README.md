@@ -72,6 +72,24 @@ Para remover os recursos criados:
 terraform destroy
 ```
 
+## CI com GitHub Actions
+
+O workflow `.github/workflows/terraform-ci.yml` é executado em pull requests e
+pushes para `main`, além de poder ser iniciado manualmente. Ele valida a
+formatação e a configuração do Terraform, executa os testes de contrato e
+publica o plano Terraform como artefato por sete dias.
+
+Configure os seguintes secrets no repositório antes de executar o job de
+plano:
+
+- `AWS_ACCESS_KEY_ID`;
+- `AWS_SECRET_ACCESS_KEY`;
+- `AWS_SESSION_TOKEN`;
+- `TF_API_TOKEN`.
+
+O pipeline não executa `terraform apply`; a aplicação de mudanças permanece
+uma ação manual e revisada.
+
 ## Variáveis
 
 | Variável | Valor padrão | Descrição |

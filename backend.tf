@@ -1,9 +1,9 @@
 terraform {
-    cloud {
-        organization = "autocenter-fiap"
+  cloud {
+    organization = "autocenter-fiap"
 
-        workspaces {
-            name = "infraestrutura"
-        }
+    workspaces {
+      name = "infraestrutura"
     }
+  }
 }
