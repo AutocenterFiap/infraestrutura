@@ -48,8 +48,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       - run: terraform init
-      - run: terraform plan -input=false -no-color -out=tfplan
-      - run: terraform show -no-color tfplan > tfplan.txt
+      - run: terraform plan -input=false -no-color | tee tfplan.txt
       - uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
