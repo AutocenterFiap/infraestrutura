@@ -24,6 +24,11 @@ output "eks_cluster_name" {
   value       = aws_eks_cluster.cluster.name
 }
 
+output "eks_node_group_name" {
+  description = "Nome do node group EKS"
+  value       = aws_eks_node_group.node_group.node_group_name
+}
+
 output "private_subnet_ids" {
   description = "IDs das subnets privadas / subnets do cluster"
   value       = aws_subnet.subnet_public[*].id

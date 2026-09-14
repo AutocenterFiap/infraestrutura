@@ -20,9 +20,9 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 
-   # Desabilita chamadas de metadata de S3/Object Lock bloqueadas pela SCP do AWS Academy
-  s3_use_path_style           = true
-  skip_requesting_account_id  = false
+  # Desabilita chamadas de metadata de S3/Object Lock bloqueadas pela SCP do AWS Academy
+  s3_use_path_style          = true
+  skip_requesting_account_id = false
 
   # Se houver recursos S3 gerenciados que disparam checagem de Object Lock:
   # O provider AWS permite ignorar checagens de S3 ativando skip_metadata_api_check
