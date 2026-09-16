@@ -3,6 +3,15 @@
 Infraestrutura AWS provisionada com Terraform neste diretório. O projeto cria a
 rede, o cluster Amazon EKS e o repositório de imagens.
 
+## Repositórios do projeto
+
+| Repositório | Link                                                                    |
+| --- |-------------------------------------------------------------------------|
+| Infraestrutura Kubernetes (este repositório) | [Repositório](https://github.com/AutocenterFiap/infraestrutura)         |
+| Infraestrutura do Banco de Dados | [Repositório](https://github.com/AutocenterFiap/database)               |
+| Lambda / Function Serverless | [Repositório](https://github.com/AutocenterFiap/autocenter-lambda-auth) |
+| Aplicação principal | [Repositório](https://github.com/AutocenterFiap/autocenter)                                                        |
+
 ## Arquitetura
 
 O desenho abaixo que  representa os recursos definidos neste projeto:
@@ -89,8 +98,18 @@ As credenciais AWS usadas pelo workflow são temporárias. Sempre que a sessão
 AWS expirar, atualize juntos `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` e
 `AWS_SESSION_TOKEN` nos Secrets do GitHub antes de executar um novo plano.
 
-O pipeline não executa `terraform apply`; a aplicação de mudanças permanece
-uma ação manual e revisada.
+O pipeline executa `terraform apply` automaticamente após a aprovação do plano,
+realizando o deploy da infraestrutura via GitHub Actions.
+
+### Regras de proteção de branch
+
+- A branch `main` é protegida — commits diretos são bloqueados.
+- Merges somente via Pull Request revisado.
+
+### Testes
+
+O projeto inclui testes de contrato executados com `terraform test` durante o
+job de CI, validando o planejamento dos principais recursos antes do deploy.
 
 ## Variáveis
 
@@ -111,6 +130,9 @@ uma ação manual e revisada.
 | `subnet_id` | Identificadores das três sub-redes públicas. |
 | `subnet_cidr` | Blocos CIDR das três sub-redes públicas. |
 | `ecr_repository_url` | URL do repositório ECR. |
+| `eks_cluster_name` | Nome do cluster EKS criado. |
+| `eks_node_group_name` | Nome do node group do cluster. |
+| `private_subnet_ids` | Identificadores das sub-redes usadas pelo cluster. |
 
 ## Rede e segurança
 
