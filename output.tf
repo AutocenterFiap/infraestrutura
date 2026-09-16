@@ -13,3 +13,23 @@ output "subnet_cidr" {
 output "subnet_id" {
   value = aws_subnet.subnet_public[*].id
 }
+
+output "ecr_repository_url" {
+  description = "URL do repositorio ECR usado para publicar a imagem Docker da aplicacao"
+  value       = aws_ecr_repository.autocenter.repository_url
+}
+
+output "eks_cluster_name" {
+  description = "Nome do cluster EKS"
+  value       = aws_eks_cluster.cluster.name
+}
+
+output "eks_node_group_name" {
+  description = "Nome do node group EKS"
+  value       = aws_eks_node_group.node_group.node_group_name
+}
+
+output "private_subnet_ids" {
+  description = "IDs das subnets privadas / subnets do cluster"
+  value       = aws_subnet.subnet_public[*].id
+}

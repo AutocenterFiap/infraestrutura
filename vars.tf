@@ -27,5 +27,5 @@ variable "labRole" {
 
 variable "instance_type" {
   description = "Tipo de instância para o grupo de nós"
-  default     = ["t3.micro"]
+  default     = ["t3.small"]
 }
